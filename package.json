@@ -1,0 +1,25 @@
+{
+  "name": "miter-calendar",
+  "version": "0.1.7",
+  "description": "Enhance your calendar for more productive meetings.",
+  "main": "main.js",
+  "scripts": {
+    "test": "cp src/env/test.ts src/derived/env.ts && cp src/env/manifest-test.json static/manifest.json && parcel build src/main.ts src/background.ts src/main.css && rm dist/*.map",
+    "dev": "cp src/env/dev.ts src/derived/env.ts && cp src/env/manifest-test.json static/manifest.json && parcel build src/main.ts src/background.ts src/main.css --no-minify && rm dist/*.map",
+    "build": "rm -rf dist && cp src/env/production.ts src/derived/env.ts && cp src/env/manifest-production.json static/manifest.json && parcel build src/main.ts src/main.css src/background.ts  && rm dist/*.map && rm -f miter-cal.zip && zip -9 -r miter-cal.zip dist",
+    "share:dev": "rm -rf ~/Dropbox/Miter/prerelease/dev && cp -p -r dist ~/Dropbox/Miter/prerelease/dev",
+    "share:test": "rm -rf ~/Dropbox/Miter/prerelease/test && cp -p -r dist ~/Dropbox/Miter/prerelease/test",
+    "share:prod": "rm -rf ~/Dropbox/Miter/prerelease/prod && cp -p -r dist ~/Dropbox/Miter/prerelease/prod"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chrome": "0.0.154",
+    "parcel-bundler": "1.12.5",
+    "parcel-plugin-static-files-copy": "2.6.0",
+    "typescript": "4.2.4"
+  },
+  "dependencies": {
+    "uuid": "3.4.0"
+  }
+}
